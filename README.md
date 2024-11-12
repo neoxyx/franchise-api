@@ -47,12 +47,9 @@ Configura las credenciales en src/main/resources/application.properties (o usa u
 Configura la conexión de base de datos y otros ajustes en el archivo application.properties o mediante variables de entorno:
 
 properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/franchise_db
-spring.datasource.username=postgres
-spring.datasource.password=your_password
 spring.r2dbc.url=r2dbc:postgresql://localhost:5432/franchise_db
-spring.r2dbc.username=postgres
-spring.r2dbc.password=your_password
+spring.r2dbc.username=admin
+spring.r2dbc.password=admin_password
 
 **Uso**
 La API está disponible en http://localhost:8080/api/franchises.
@@ -61,10 +58,9 @@ La API está disponible en http://localhost:8080/api/franchises.
 1. Crear una franquicia
 Endpoint: POST /api/franchises
 Body:
-json
-{
-  "name": "Nombre de la Franquicia"
-}
+Text
+Nombre de la Franquicia
+
 Response: Devuelve el objeto de la franquicia creada.
 
 2. Añadir sucursal a una franquicia
@@ -72,8 +68,7 @@ Endpoint: POST /api/franchises/{franchiseId}/branches
 Body:
 json
 {
-  "location": "Ubicación de la sucursal",
-  "manager": "Nombre del Gerente"
+  "name": "Nombre de la sucursal"
 }
 Response: Devuelve el objeto de la sucursal creada.
 
@@ -99,6 +94,9 @@ Response: Devuelve el producto actualizado con el nuevo stock.
 8. Consultar productos con mayor stock para una franquicia
 Endpoint: GET /api/franchises/{franchiseId}/products/highest-stock
 Response: Devuelve una lista de productos ordenada por stock descendente.
+
+9. Eliminar un producto de una sucursal
+Endpoint: GET /api/franchises/branches/{branchId}/products/{productId}
 
 **Estructura del Proyecto**
 controller/: Controladores que manejan las solicitudes HTTP.
