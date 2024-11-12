@@ -31,6 +31,10 @@ public class Branch {
         this.name = name;
     }
 
+    public Long getFranchiseId() {
+        return franchiseId;
+    }
+
     public void setFranchiseId(Long franchiseId) {  // Agregar el setter
         this.franchiseId = franchiseId;
     }
